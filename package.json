@@ -2,9 +2,10 @@
   "name": "js-graph",
   "version": "1.0.0",
   "description": "",
-  "main": "lib/graph.js",
+  "main": "dist/graph.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "prepublish": "rollup -i ./lib/graph.js -o ./dist/graph.js -f umd"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +21,7 @@
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
     "expect.js": "^0.3.1",
-    "mocha": "^5.0.0"
+    "mocha": "^5.0.0",
+    "rollup": "^0.57.1"
   }
 }
