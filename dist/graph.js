@@ -89,7 +89,6 @@
       }
       return this.nodes[0]
     }
-  }
 
   module.exports = Graph;
 
