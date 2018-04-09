@@ -50,5 +50,9 @@ Graph.connect({
   weight: 3
 })
 
-const path = graph.dijkstra()
+const path = graph.dijkstra(s)
+
 console.log('path', path)
+
+const pathToD = Graph.getPathFromParent(path, d)
+console.log('path to d', pathToD)
