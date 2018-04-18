@@ -134,7 +134,7 @@
      * @param {array} tree - point data
      * @param {json} tree[].node - Reference to node in graph
      * @param {number} tree[].weight - Weight from the beginning of three to the
-     *    point
+     *     point
      * @param {json} tree[].parent - Path to the parent node
      * @param {json} target - Node reference
      */
