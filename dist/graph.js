@@ -90,6 +90,75 @@
       return this.nodes[0]
     }
 
+    /**
+     * @params {node} start
+     */
+    dijkstra(start) {
+      const visited = [];
+      const nodes = this.nodes.map((node) => ({
+        node,
+        weight: node === start ? 0 : Infinity,
+        parent: null
+      }));
+
+      while (nodes.length) {
+        let min = null;
+        nodes.forEach((node) => {
+          if (min === null || node.weight <  min.weight) {
+            min = node;
+          }
+        });
+
+        if (!min) {
+          break
+        }
+
+        const index = nodes.findIndex((node) => node === min);
+        nodes.splice(index, 1);
+        visited.push(min);
+
+        min.node.connections.forEach((connection) => {
+          const weight = connection.weight + min.weight;
+          const target = connection.target;
+          const node = nodes.find(({ node }) => node === target);
+
+          if (node && node.weight > weight) {
+            node.weight = weight, node.parent = min.node;
+          }
+        });
+      }
+      return visited
+    }
+
+    /**
+     * @param {array} tree - point data
+     * @param {json} tree[].node - Reference to node in graph
+     * @param {number} tree[].weight - Weight from the beginning of three to the
+     *    point
+     * @param {json} tree[].parent - Path to the parent node
+     * @param {json} target - Node reference
+     */
+    static getPathFromParent (three, target) {
+      const targetPoint = three.find(({ node }) => node === target);
+      const rootPoint = three.find(({ parent }) => parent === null);
+      const path = [];
+      let current = targetPoint;
+
+      path.push(current.node);
+      while (current !== rootPoint) {
+        const parent = current.parent; // parent node. it is not a point
+        current = three.find(({ node }) => node === parent);
+        path.push(current.node);
+      }
+
+      return {
+        weight: targetPoint.weight,
+        start: rootPoint.node,
+        path
+      }
+    }
+  }
+
   module.exports = Graph;
 
 })));
