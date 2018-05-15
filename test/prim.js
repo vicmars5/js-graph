@@ -1,4 +1,4 @@
-const Graph = require('../lib/graph')
+const Graph = require('../dist/graph')
 const expect = require('expect.js')
 
 describe('Prim', () => {
