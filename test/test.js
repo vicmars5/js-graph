@@ -1,6 +1,6 @@
 const assert = require('assert')
 const expect = require('expect.js')
-const Graph = require('../lib/graph')
+const Graph = require('../dist/graph')
 
 describe('Graph', () => {
   let graph;

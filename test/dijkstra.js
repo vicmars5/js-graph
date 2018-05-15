@@ -1,4 +1,4 @@
-const Graph = require('../lib/graph')
+const Graph = require('../dist/graph')
 
 const run = () => {
   const graph = new Graph()
