@@ -35,7 +35,7 @@ describe('Graph', () => {
   })
 
   it('connect node "a" to "b"', () => {
-    const connection = .connect({
+    const connection = Graph.connect({
       node,
       target: node[1],
       weight: 1
