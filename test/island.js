@@ -67,6 +67,23 @@ describe('Islands finder', () => {
     const island = Graph.getIsland(x)
     expect(island.length).to.be(3)
   })
+  it('MST Prim using island from A', () => {
+    const island = Graph.getIsland(a)
+    const treeNodes = graph.prim(a, island)
+    expect(treeNodes).to.be.ok()
+
+    console.log(treeNodes.map((node) => {
+      const strParent = node.parent ? node.parent.node.val : '_'
+      return `${strParent} -> ${node.node.val} : ${node.weight}`
+    }).join('\n'))
+  })
+  it('MST Kruskal using island from A', () => {
+    const island = Graph.getIsland(a)
+    const treeNodes = graph.kruskal(island)
+    console.log('tree nodes', treeNodes.map((con) => {
+      return `(${con.target.val},${con.origin.val}): ${con.weight}`
+    }).join(' '))
+  })
   it('Get all islands', () => {
     let nodes = [...graph.getNodes()] // clone nodes array
     const islands = []

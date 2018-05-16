@@ -93,9 +93,9 @@
     /**
      * Get minimum spaning tree (MST)
      */
-    prim (startNode) {
+    prim (startNode, nodes = this.nodes) {
       // clone all nodes in graph
-      const treeNodes = this.nodes.map((node) => ({
+      const treeNodes = nodes.map((node) => ({
         node,
         visited: false,
         parent: null,
@@ -185,8 +185,8 @@
      * Get Minimum Spanning Tree (MST)
      * @return MST
      */
-    kruskal () {
-      const unsortedConnections = this.nodes.reduce((connections, node) => {
+    kruskal (nodes = this.nodes) {
+      const unsortedConnections = nodes.reduce((connections, node) => {
         node.connections.forEach((connection) => {
           // is the inverse connection
           const paralelCon = connections.find((c) => {

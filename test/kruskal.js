@@ -49,7 +49,7 @@ describe('Kruskal', () => {
   })
 
   it('Minimum Spanning Tree', () => {
-    const treeNodes = graph.kruskal(a)
+    const treeNodes = graph.kruskal()
     console.log('tree nodes', treeNodes.map((con) => {
       return `(${con.target.val},${con.origin.val}): ${con.weight}`
     }).join(' '))
