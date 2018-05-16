@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha",
     "lint": "eslint lib/**/*.js",
-    "prepublish": "rollup"
+    "prepublish": "rollup -c"
   },
   "keywords": [],
   "author": "",

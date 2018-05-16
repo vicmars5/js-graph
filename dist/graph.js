@@ -1,7 +1,7 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (factory());
+  (global.jsGraph = factory());
 }(this, (function () { 'use strict';
 
   /**
@@ -322,6 +322,20 @@
     }
 
     /**
+     * @param {JSON} node - Graph.Node
+     * @param {Set} island - Avoid this function it is for recursion
+    */
+    static getIsland(node, island = new Set()) {
+      node.connections.forEach(({ target }) => {
+        if (!island.has(target)) {
+          island.add(target);
+          Graph.getIsland(target, island);
+        }
+      });
+      return Array.from(island)
+    }
+
+    /**
      * @param {JSON} from - Origin node
      * @param {JSON} to - Target node
      */
@@ -338,6 +352,6 @@
     }
   }
 
-  module.exports = Graph;
+  return Graph;
 
 })));
